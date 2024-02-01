@@ -23,15 +23,6 @@ Theme css
 .copyright-footer {
    display: none !important;
 }
-
-    // Get the HTML content of the document
-    var htmlContent = document.documentElement.outerHTML;
-
-    // Remove line breaks and extra spaces
-    var minifiedHTML = htmlContent.replace(/\n/g, '').replace(/\s+/g, ' ');
-
-    // Update the document's outerHTML
-    document.documentElement.outerHTML = minifiedHTML;
 	
 	
 Create a file with name my_functions_helper.php in application/helpers/ and add the following code:
