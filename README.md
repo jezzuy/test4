@@ -8,7 +8,7 @@ I use docker-compose as an orchestrator. To run these containers:
 docker-compose up -d
 ```
 Permission denied issue
-Go to www container and execute command "chmod -R 777 ./"
+Go to www container and execute command "chmod -R 777 ./" (Not recommended)
 
 Theme css
 
