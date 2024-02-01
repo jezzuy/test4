@@ -1,0 +1,50 @@
+version: "3.1"
+services:
+
+    sqldb:
+        image: mysql:8.0
+        ports: 
+            - "3308:3308"
+        command: ["--default-authentication-plugin=mysql_native_password", "--max-allowed-packet=512M", "--max-connections=1000"]
+        restart: always
+        environment:
+            MYSQL_DATABASE: perfex
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test
+        volumes:
+            - ./mysql_data:/var/lib/mysql
+        networks:
+            my-main-net:
+                ipv4_address: 172.18.200.250
+    www:
+        build: .
+        restart: always
+        ports: 
+            - "8741:80"
+        volumes:
+            - ./www:/var/www/html/
+        links:
+            - sqldb
+        networks:
+            - my-main-net
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        links: 
+            - sqldb:sqldb
+        ports:
+            - 8792:80
+        environment:
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test
+        networks:
+            - my-main-net
+volumes:
+    mysql_data:
+    
+networks:
+    my-main-net:
+      external: true 
