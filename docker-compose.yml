@@ -16,7 +16,7 @@ services:
             - ./mysql_data:/var/lib/mysql
         networks:
             my-main-net:
-                ipv4_address: 172.18.200.250
+                ipv4_address: 172.18.220.250
     www:
         build: .
         restart: always
