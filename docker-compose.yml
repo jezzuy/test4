@@ -13,10 +13,10 @@ services:
             MYSQL_PASSWORD: test
             MYSQL_ROOT_PASSWORD: test
         volumes:
-            - ./mysql_data:/var/lib/mysql
+            - ./mysql_data1:/var/lib/mysql
         networks:
             my-main-net:
-                ipv4_address: 172.18.220.250
+                ipv4_address: 172.18.222.250
     www:
         build: .
         restart: always
@@ -43,7 +43,7 @@ services:
         networks:
             - my-main-net
 volumes:
-    mysql_data:
+    mysql_data1:
     
 networks:
     my-main-net:
